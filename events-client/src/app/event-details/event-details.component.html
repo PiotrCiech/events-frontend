@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Event Details</h1>
+<div mat-dialog-content>
+  <p><strong>Device ID:</strong> {{ data.deviceId }}</p>
+  <p><strong>Event Date:</strong> {{ data.eventDate | date:'short' }}</p>
+  <p><strong>Type:</strong> {{ data.type }}</p>
+
+  <div *ngIf="data.type === 'deviceMalfunction'">
+    <p><strong>Reason Code:</strong> {{ data.evtData.reasonCode }}</p>
+    <p><strong>Reason Text:</strong> {{ data.evtData.reasonText }}</p>
+  </div>
+
+  <div *ngIf="data.type === 'temperatureExceeded'">
+    <p><strong>Temperature:</strong> {{ data.evtData.temp }}</p>
+    <p><strong>Threshold:</strong> {{ data.evtData.threshold }}</p>
+  </div>
+
+  <div *ngIf="data.type === 'doorUnlocked'">
+    <p><strong>Unlock Date:</strong> {{ data.evtData.unlockDate | date:'short' }}</p>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>
